@@ -21,10 +21,10 @@ provider "aws" {
 }
 
 module "aws_ec2_apache" {
-  source = ".//terraform-aws-ec2-apache" # Path to cloned module
-  server_name = "Very Great Web Server" # Name of your server
+  source          = ".//terraform-aws-ec2-apache" # Path to cloned module
+  server_name     = "Very Great Web Server" # Name of your server
   ssh_allowed_ips = "X.X.X.X/X" # CIDR IP block to allow SSH traffic on
-  ssh_public_key = "ssh-rsa XXXX" # Generated public key
+  ssh_public_key  = "ssh-rsa XXXX" # Generated public key
 }
 
 output "web_server_ip" {
