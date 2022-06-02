@@ -3,32 +3,27 @@ Terraform module which makes it easy to create an Apache web server on an EC2 in
 
 Not intended for production use
 
-## Instructions
-1. Clone the Repository
-```
-git clone https://github.com/Jellayy/terraform-aws-ec2-apache.git
-```
-
-2. Generate SSH Keys for console access
+## Usage
+1. Generate SSH Keys for console access
 ```
 ssh-keygen
 ```
 
-3. Start spinning up webservers easier than ever
+2. Start spinning up webservers easier than ever
 ```hcl
 provider "aws" {
   region = "us-west-1" # Any AWS EC2 Region
 }
 
-module "aws_ec2_apache" {
-  source          = ".//terraform-aws-ec2-apache" # Path to cloned module
+module "ec2_apache" {
+  source          = "Jellayy/ec2-apache/aws"
   server_name     = "Very Great Web Server" # Name of your server
   ssh_allowed_ips = "X.X.X.X/X" # CIDR IP block to allow SSH traffic on
   ssh_public_key  = "ssh-rsa XXXX" # Generated public key
 }
 
 output "web_server_ip" {
-  value = module.aws_ec2_apache.ec2_public_ip # Outputs server's public IP to terraform outputs
+  value = module.ec2_apache.ec2_public_ip # Outputs server's public IP to terraform outputs
 }
 ```
 
